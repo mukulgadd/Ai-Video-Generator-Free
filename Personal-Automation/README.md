@@ -8,13 +8,97 @@ A fully automated YouTube video generation pipeline that runs **entirely on Appl
 Script + Scene Plan → Narration → AI Images → Video Assembly → Thumbnails → Captions → Package
 ```
 
-- **Text-to-Speech** — Natural narration via edge-tts (cloud, free, instant)
-- **AI Image Generation** — MFLUX (FLUX schnell 4-bit) running locally on Apple Silicon
-- **Video Assembly** — Ken Burns effects, lower-third overlays, background music, logo watermark
-- **Shorts Pipeline** — Vertical short-form content with text overlays and pattern interrupts
-- **Thumbnails** — A/B variants with safe zones and feed-pop adjustments
-- **Captions** — Auto-generated SRT from sentence boundary data
-- **Distribution** — X threads, Substack newsletters, LinkedIn posts from any script
+## Features
+
+### Zero-Cost Local Generation
+- Runs entirely on Apple Silicon — no cloud GPU, no API keys, no subscriptions
+- MFLUX (FLUX schnell 4-bit) generates images locally using MLX + Metal
+- edge-tts provides free, high-quality narration (Microsoft's neural voices)
+- FFmpeg handles all encoding locally with hardware acceleration
+
+### AI-Powered Narration
+- Natural text-to-speech via edge-tts (en-US-AndrewNeural voice)
+- Adjustable speech rate (default -5% for deliberate delivery)
+- Strategic pauses auto-inserted after statistics, percentages, and time shifts
+- Sentence boundary data captured for precise caption/overlay sync
+- Fallback to local Qwen3-TTS (MLX) if cloud isn't available
+
+### AI Image Generation
+- FLUX schnell 4-bit model via MFLUX — optimized for Apple Silicon
+- Multi-image per scene: 1 image every ~8 seconds of narration (60-70 per video)
+- 1536×864 native generation → LANCZOS upscale to 1920×1080 (saves memory)
+- Automatic retry (3 attempts) with 50KB quality gate
+- Style prefix injection to maintain visual consistency across all images
+
+### Professional Video Assembly
+- **Ken Burns effects** — 8-direction camera movement (zoom in/out, pan, diagonal)
+- **Lower-third text overlays** — Semi-transparent bar + white text, sentence-boundary synced
+- **Multi-overlay per scene** — 2-4 overlays distributed across sub-images (every 12-15s)
+- **Background music** — Per-section mood switching (tension/momentum/neutral/resolve)
+- **Music mixing** — -22dB bed volume, 2s crossfades between moods, 3s fade in/out
+- **Logo watermark** — Persistent branding at configurable opacity and position
+- **1-second scene gaps** — Prevents audio overlap, gives breathing room
+- **LUFS mastering** — Final audio normalized to -14 LUFS / -1.0 dBTP (YouTube standard)
+- **CRF 18 encoding** — Proper HD bitrate for YouTube upload
+
+### YouTube Shorts Pipeline
+- Independent vertical pipeline (1080×1920) — not a crop of horizontal content
+- All-Pillow rendering via single `VideoClip(make_frame)` for stability
+- Text overlays with word-wrap, fade-in, and pre-emptive timing (0.3s before narration)
+- Single overlay rule — only latest active cue renders (no stacking)
+- Pattern interrupt — 8% punch-in zoom at midpoint of each image
+- Mid-sentence loop strategy for seamless replay
+- Subscribe CTA with varied phrasing per short
+- 24fps output, background music at -22dB
+
+### Thumbnail Generation
+- A/B variant system: Variant A (threat/red) + Variant B (opportunity/gold)
+- Safe zone enforcement: text constrained to center 70% (avoids YouTube duration badge)
+- Feed pop: +15% contrast, +10% saturation for dark mode visibility
+- MAX 3 words per thumbnail — visual proof, not description
+- MFLUX generates the base image, Pillow composites text
+
+### Auto-Generated Captions (SRT)
+- Sentence-level SRT from edge-tts boundary data
+- Proper inter-scene gap offsets
+- Ready for YouTube Studio upload (Subtitles → English → Upload with timing)
+- Improves SEO for technical terms that auto-captions botch
+
+### Multi-Platform Distribution
+- **X Thread Generator** — Script → 6-tweet thread with stats + CTA
+- **Substack Newsletter** — Script → article with TL;DR, sections, subscribe CTA
+- **LinkedIn Post** — 150-word business angle + hashtags (link in first comment)
+- One command generates all three: `vidgen distribute`
+
+### Data Visualization Pipeline
+- `visual_type: "data"` scenes render charts on atmospheric backgrounds
+- Templates: big_stat, bar_comparison, line_trend, comparison, bullet_list
+- Gaussian blur background + dark gradient + grain texture for cohesion
+- Matplotlib/Pillow renders charts as transparent PNGs composited onto MFLUX backgrounds
+
+### Community Tab Content
+- Auto-generates 2 square-cropped scene images (1080×1080) per video
+- Auto-generates 280-char engagement posts (poll + stat-hook)
+- Integrated into the `vidgen produce` output
+
+### Batch Processing & Resume
+- Queue system: add multiple videos, process overnight
+- `caffeinate` integration prevents Mac sleep during multi-hour runs
+- Full resume support — intermediate artifacts persist to disk
+- Per-stage and per-short resume on failure
+- `generate_overnight.sh` script for hands-off batch generation
+
+### News Scanner (Reactive Content)
+- Monitors HackerNews, TechCrunch, ArXiv, Reddit, ProductHunt
+- Scores stories by brand name, conflict terms, numbers, recency
+- Dedup via similarity threshold
+- Outputs ranked candidates for script writing
+
+### Production-Ready CLI
+- Single entry point: `vidgen` with subcommands for every operation
+- Input validation before generation starts
+- Configurable via centralized YAML (voice, visual, pipeline, shorts, music)
+- Pydantic models for type-safe data flow throughout the pipeline
 
 ## Requirements
 
