@@ -1,0 +1,121 @@
+{
+  "video_title": "How AI Agents Are Quietly Replacing Traditional SaaS",
+  "topic_slug": "ai-agents-replacing-saas",
+  "style_prefix": "Professional tech business illustration, clean modern aesthetic, muted blue and teal color palette, subtle gradients, minimalist corporate style, high detail, 4K quality",
+  "total_duration_seconds": 420,
+  "thumbnail_text": "SAAS IS DEAD",
+  "thumbnail_accent_word": "DEAD",
+  "thumbnail_accent_color": "#e94560",
+  "scenes": [
+    {
+      "id": "scene_001",
+      "section_id": "hook",
+      "image_prompt": "Split screen composition — left side shows a chaotic desktop with dozens of overlapping browser tabs and SaaS dashboards glowing with notifications, right side shows a single serene AI interface with clean lines and a pulsing blue orb representing an autonomous agent, dramatic lighting contrast between cluttered and minimal sides",
+      "ken_burns": "zoom-in",
+      "start_time": 0.0,
+      "duration": 14.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "$200B SaaS Industry Disrupted",
+        "position": "bottom",
+        "appear_at": 5.0,
+        "duration": 6.0
+      }
+    },
+    {
+      "id": "scene_002",
+      "section_id": "introduction",
+      "image_prompt": "Elegant horizontal timeline visualization showing three eras of software — on-premise servers on the left circa 2000, cloud icons and SaaS logos in the middle circa 2015, and glowing AI agent nodes on the right circa 2025 — connected by a flowing gradient line, dark background with luminous elements",
+      "ken_burns": "pan-right",
+      "start_time": 14.0,
+      "duration": 22.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "$600B Market by 2027",
+        "position": "top",
+        "appear_at": 15.0,
+        "duration": 5.0
+      }
+    },
+    {
+      "id": "scene_003",
+      "section_id": "section_1",
+      "image_prompt": "Bird's eye view of a modern office desk with three large monitors showing different SaaS dashboards — CRM with customer cards, project management with kanban boards, analytics with charts — all showing red notification badges, warm overhead lighting casting soft shadows on the keyboard and mouse",
+      "ken_burns": "zoom-out",
+      "start_time": 36.0,
+      "duration": 28.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "112 SaaS Apps per Company",
+        "position": "center",
+        "appear_at": 4.0,
+        "duration": 5.0
+      }
+    },
+    {
+      "id": "scene_004",
+      "section_id": "section_1",
+      "image_prompt": "Infographic-style illustration showing a knowledge worker's daily time breakdown as a circular chart — 28% segment highlighted in red labeled context switching, remaining segments in muted blues and grays for actual productive work, email, and meetings — clean data visualization aesthetic",
+      "ken_burns": "pan-left",
+      "start_time": 64.0,
+      "duration": 24.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "28% Lost to Context Switching",
+        "position": "bottom",
+        "appear_at": 3.0,
+        "duration": 6.0
+      }
+    },
+    {
+      "id": "scene_005",
+      "section_id": "section_2",
+      "image_prompt": "Central glowing AI agent node rendered as an elegant blue orb with neural network patterns, connected by flowing data streams to surrounding icons representing email, CRM, calendar, support tickets, and documents — data flows inward and actions flow outward — dark background with teal accent lighting",
+      "ken_burns": "zoom-in",
+      "start_time": 88.0,
+      "duration": 30.0,
+      "transition": "crossfade",
+      "text_overlay": null
+    },
+    {
+      "id": "scene_006",
+      "section_id": "section_2",
+      "image_prompt": "Before and after comparison of customer support workflow — top half shows a complex flowchart with five system boxes connected by arrows (Zendesk, CRM, email, knowledge base, escalation), bottom half shows a single AI agent box with direct lines to resolution — clean technical diagram style with blue highlights",
+      "ken_burns": "pan-right",
+      "start_time": 118.0,
+      "duration": 26.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "82% Resolved Without Humans",
+        "position": "bottom",
+        "appear_at": 12.0,
+        "duration": 6.0
+      }
+    },
+    {
+      "id": "scene_007",
+      "section_id": "section_3",
+      "image_prompt": "Three-column infographic showing industry disruption metrics — customer service column with support headset icon and downward arrow, finance column with calculator icon and efficiency graph, sales column with handshake icon and upward growth line — each with bold percentage figures, professional data dashboard aesthetic",
+      "ken_burns": "pan-left",
+      "start_time": 144.0,
+      "duration": 30.0,
+      "transition": "crossfade",
+      "text_overlay": {
+        "text": "60% Workload Reduction",
+        "position": "center",
+        "appear_at": 16.0,
+        "duration": 5.0
+      }
+    },
+    {
+      "id": "scene_008",
+      "section_id": "conclusion",
+      "image_prompt": "Forward-looking panoramic scene of a streamlined modern office where humans at standing desks focus on whiteboards with strategy diagrams while translucent AI agent avatars handle screens of operational data in the background — warm golden hour lighting suggesting optimism, clean architectural lines",
+      "ken_burns": "zoom-out",
+      "start_time": 176.0,
+      "duration": 18.0,
+      "transition": "cut",
+      "text_overlay": null
+    }
+  ]
+}

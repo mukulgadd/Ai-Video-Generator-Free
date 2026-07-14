@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+.venv/
+venv/
+ENV/
+
+# IDE / Editor
+.kiro/
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Generated content (private)
+scripts/
+shorts/
+channel/
+analytics/
+jobs/
+output/
+models/
+news/
+
+# Temp files
+*.mp4
+test_audio/
+*.wav
+*.mp3
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pytest
+.pytest_cache/
+htmlcov/
+.coverage
+
+# Misc
+*.log

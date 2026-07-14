@@ -1,0 +1,63 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "vidgen"
+version = "0.1.0"
+description = "Automated YouTube video generation pipeline for AI/Tech Business channel, running entirely on Apple Silicon"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [
+    { name = "Mukul Gaddhyan" },
+]
+
+dependencies = [
+    "click>=8.1",
+    "pyyaml>=6.0",
+    "pydantic>=2.0",
+    "moviepy>=2.0",
+    "pillow>=10.0",
+    "mflux>=0.4.0",
+    "pydub>=0.25",
+    "scipy>=1.11",
+    # TTS dependency will be added in Task 8 once model is chosen
+    # (Qwen3-TTS or Chatterbox-TTS via MLX/MPS)
+    "httpx>=0.27",
+    "feedparser>=6.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "hypothesis>=6.100",
+    "pytest-cov>=5.0",
+]
+
+[project.scripts]
+vidgen = "vidgen.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vidgen"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "--strict-markers"
+markers = [
+    "property: property-based tests (Hypothesis)",
+    "slow: tests that take a long time to run",
+    "integration: integration tests requiring full pipeline",
+]
+
+[tool.hypothesis]
+# Hypothesis profiles are configured in tests/conftest.py
+# dev: 100 examples, ci: 200 examples
+
+[tool.coverage.run]
+source = ["vidgen"]
+omit = ["tests/*"]
+
+[tool.coverage.report]
+fail_under = 80
+show_missing = true

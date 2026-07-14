@@ -1,0 +1,161 @@
+voice:
+  engine: "edge-tts"
+  voice: "en-US-AndrewNeural"
+  rate: "-5%"
+  model: "Qwen/Qwen3-TTS-12Hz-1.7B-CustomVoice"
+  speaker: "aiden"
+  instruct: "Speak as a professional male narrator delivering a compelling tech documentary. Use a warm, confident storytelling tone. Pause briefly after important numbers and statistics to let them land. Vary your pace - slow down slightly for key revelations and speed up during transitions. Sound like you're sharing fascinating insights with a smart friend, not reading a script."
+  pace_wpm: 150
+  sample_rate: 24000
+  sentence_pause_ms: 400
+  section_pause_ms: 1000
+
+visual:
+  style_prefix: "professional tech illustration, clean minimalist style, blue and purple color scheme, no text, no words, no letters, no numbers, no labels, no captions"
+  color_palette: ["#1a1a2e", "#16213e", "#0f3460", "#e94560"]
+  font_family: "Helvetica"
+  image_model: "./models/schnell-4bit"
+  image_steps: 4
+  image_gen_width: 1536       # Generate at this width (must be multiple of 16)
+  image_gen_height: 864       # Generate at this height (must be multiple of 16)
+  image_output_width: 1920    # Upscale to this width for final video
+  image_output_height: 1080   # Upscale to this height for final video
+  seed_strategy: "fixed"
+
+branding:
+  intro_template: null
+  outro_template: null
+  watermark: null
+  thumbnail_font: "Helvetica"
+  thumbnail_colors: ["#ffffff", "#e94560"]
+
+pipeline:
+  generation_ratio_minutes: 1.0
+  timeout_buffer: 1.5
+  memory_limit_gb: 32
+  output_dir: "./output"
+  jobs_dir: "./jobs"
+  crossfade_duration_ms: 500
+  background_music_db: -24
+  max_retries: 3
+  image_timeout_seconds: 120
+
+data_overlay:
+  enabled: true
+  blur_radius: 8
+  dark_overlay_base: 120
+  grain_opacity: 0.05
+
+shorts:
+  image_gen_width: 768
+  image_gen_height: 1344
+  image_output_width: 1080
+  image_output_height: 1920
+  ken_burns_zoom: 0.10
+  image_pace_seconds: 6
+  text_font_size_impact: 96
+  text_font_size_normal: 72
+  text_font_size_danger: 80
+  text_color_impact: "#ffffff"
+  text_color_normal: "#ffffff"
+  text_color_danger: "#e94560"
+  logo_size: 60
+  logo_opacity: 0.30
+  logo_position: "bottom-left"
+  narration_rate: "+3%"
+  music_volume_db: -22
+  music_volume_db: -22
+  music_fade_in: 1.0
+  music_fade_out: 2.0
+  music_dir: "channel/assets/music"
+  output_dir: "output/shorts"
+
+news_scanner:
+  weights:
+    brand_name: 3.0
+    numbers_stats: 2.0
+    conflict_tension: 2.5
+    multi_source: 2.0
+    hn_trending: 1.5
+    recency: 2.0
+  brand_list:
+    - OpenAI
+    - Cursor
+    - Google
+    - Meta
+    - Anthropic
+    - Microsoft
+    - Apple
+    - NVIDIA
+    - Tesla
+    - Amazon
+    - DeepSeek
+    - Mistral
+    - Hugging Face
+    - Stability AI
+    - Midjourney
+    - Perplexity
+    - GitHub Copilot
+    - Claude
+    - GPT
+    - Gemini
+    - Llama
+  conflict_terms:
+    - vs
+    - kills
+    - fails
+    - dies
+    - destroying
+    - crashes
+    - layoffs
+    - shuts down
+    - collapses
+    - disrupts
+    - threatens
+    - replaces
+    - eliminates
+    - overtakes
+    - dominates
+    - sues
+    - sued
+    - lawsuit
+    - drops
+    - blocks
+    - bans
+    - banned
+    - cuts
+    - slashes
+    - loses
+    - lost
+    - plummets
+    - tanks
+    - fires
+    - fired
+    - axes
+    - scraps
+    - halts
+  sources:
+    hackernews:
+      enabled: true
+      url: "https://hacker-news.firebaseio.com/v0"
+      timeout: 10.0
+    techcrunch:
+      enabled: true
+      url: "https://techcrunch.com/category/artificial-intelligence/feed/"
+      timeout: 10.0
+    arxiv:
+      enabled: true
+      url: "http://export.arxiv.org/rss/cs.AI"
+      timeout: 10.0
+    reddit:
+      enabled: true
+      url: "https://www.reddit.com/r/MachineLearning/hot.json"
+      timeout: 10.0
+    producthunt:
+      enabled: true
+      url: "https://www.producthunt.com/feed"
+      timeout: 10.0
+  candidates_file: "news/candidates.json"
+  max_story_age_hours: 24
+  dedup_similarity_threshold: 0.6
+  total_timeout: 30.0
